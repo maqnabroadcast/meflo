@@ -33,13 +33,25 @@
   <div class="iframe-container">
     <iframe
       id="app"
-      src="https://script.google.com/macros/s/AKfycbxGsyYJ0Rp-LtifYrdcYWfgwPpWHK9lebCNT0eTLhQj9tBTTlfpzuY8oqCst5npeRfxvw/exec"
       scrolling="yes"
       allowfullscreen="true"
       webkitallowfullscreen="true"
       mozallowfullscreen="true"
-      allow="fullscreen; camera; microphone; display-capture; geolocation;">
+      allow="fullscreen; camera; microphone; display-capture; geolocation; clipboard-write;">
     </iframe>
   </div>
+
+  <script>
+    (function() {
+      // Your Google Apps Script Web App Base URL
+      const baseUrl = "https://script.google.com/macros/s/AKfycbxGsyYJ0Rp-LtifYrdcYWfgwPpWHK9lebCNT0eTLhQj9tBTTlfpzuY8oqCst5npeRfxvw/exec";
+      
+      // Captures URL parameters (e.g., ?mode=guest&rd=RD-xxxx)
+      const currentParams = window.location.search;
+      
+      // Dynamically load the Google Apps Script inside the iframe with guest params attached
+      document.getElementById('app').src = baseUrl + currentParams;
+    })();
+  </script>
 </body>
 </html>
